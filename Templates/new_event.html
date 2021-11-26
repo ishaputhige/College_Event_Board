@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block css %}
+<link href="../static/css/login.css" rel="stylesheet" /> {% endblock %} {% block body %}
+<div class="new-event">
+    <div class="form">
+        <form action="/add_event" class="add-event" method="post">
+            <input type="text" name="title" id="title" placeholder="Name of Event" required />
+            <input type="text" name="description" id="description" placeholder="Description of the Event" required />
+            <input type="text" name="genre" id="genre" placeholder="Genre of the Event" required />
+            <input type="text" name="location" id="location" placeholder="Location of the Event" required />
+            <input type="datetime-local" name="date" id="date" placeholder="Enter Date" required />
+            <input type="text" name="club-name" id="club-name" placeholder="Name of the club" required />
+            <input type="number" name="capacity" id="capacity" placeholder="Capacity" required />
+            <button>Add Event</button>
+            <!-- <p class="message">Already registered? <a href="#">Sign In</a></p> -->
+        </form>
+        <!-- <div class="form-group ">
+            <div id="msg">{{ msg }}</div>
+            <p style="padding:5px;">
+        </div> -->
+    </div>
+</div>
+{% endblock %}

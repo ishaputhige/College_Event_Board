@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block css %}
+<link href="../static/css/profile.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+{% endblock %} {% block body %}
+<h1>Welcome {{session.name}}</h1>
+
+<div class="edit">
+    <div class="btn">
+
+    </div>
+</div>
+
+<div class="shopping-cart">
+    <!-- <div class="btn"><button>Update</button></div> -->
+
+
+
+
+    <table class='table'>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Location</th>
+            <th>Date & Time</th>
+            <th>Club Name</th>
+            <th>Available Seats</th>
+            <th></th>
+        </tr>
+
+        {% for p in events %}
+        <tr>
+            <td>{{ p.title }}</td>
+            <td>{{ p.genre }}</td>
+            <td>{{ p.location }}</td>
+            <td>{{ p.date_time }}</td>
+            <td>{{ p.club_name }}</td>
+            <td>{{ p.available }}</td>
+            <td>
+                <form action="cancel/{{p.id}}" method="post">
+                    <input type="hidden" name="_method" value="Cancel">
+                    <input type="submit" value="Cancel" class="btn btn-danger">
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <br> {% endblock %} {% block js %}
+    <script src="../static/js/profile.js"></script>
+    {% endblock %}

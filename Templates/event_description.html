@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block css %}
+<link href="../static/css/event.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+{% endblock %} {% block body %} {% if events %} {% for p in events %}
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <!-- <img src="img_avatar.png" alt="Avatar" style="widp:300px;height:300px;"> -->
+            <h3>{{ p.title }}</h3>
+            <p><strong>  Genre :</strong> {{ p.genre }}</p>
+            <p><strong>  Location :</strong> {{ p.location }} </p>
+            <p> <strong> Date & Time :</strong> {{ p.date_time }} </p>
+            <p><strong>  Club Name : </strong> {{ p.club_name }}</p>
+            <p><strong>  Seats : </strong> {{ p.available }}</p>
+        </div>
+        <div class="flip-card-back">
+            <h1>About Event</h1>
+            <p> <strong> Description : </strong> {{ p.description }}</p>
+            <p><form action="book_event/{{p.id}}" method="post">
+                <input type="hidden" name="_method" value="Book">
+                <input type="submit" value="Book" class="btn btn-danger">
+                </form>
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endfor %} {% endif %} {% endblock %}
